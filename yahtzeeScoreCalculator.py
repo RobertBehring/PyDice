@@ -42,7 +42,7 @@ class PlayerScore:
         """
         TODO: Implement
         Count and add only aces
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         total_aces = 0
@@ -57,7 +57,7 @@ class PlayerScore:
         """
         TODO: Implement
         Count and add only twos
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         total_aces = 0
@@ -72,7 +72,7 @@ class PlayerScore:
         """
         TODO: Implement
         Count and add only threes
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         total_aces = 0
@@ -87,7 +87,7 @@ class PlayerScore:
         """
         TODO: Implement
         Count and add only fours
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         total_aces = 0
@@ -102,7 +102,7 @@ class PlayerScore:
         """
         TODO: Implement
         Count and add only fives
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         total_aces = 0
@@ -117,7 +117,7 @@ class PlayerScore:
         """
         TODO: Implement
         Count and add only sixes
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         total_aces = 0
@@ -132,7 +132,7 @@ class PlayerScore:
         """
         TODO: docstring
         Add total of all three dice
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         value_range = set()
@@ -158,7 +158,7 @@ class PlayerScore:
         """
         TODO: Implement
         Add total of all four dice
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         value_range = set()
@@ -184,7 +184,7 @@ class PlayerScore:
         """
         TODO: Implement
         Yahtzee: Set 50 points
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         value_range = set()
@@ -210,7 +210,7 @@ class PlayerScore:
         """
         TODO: Implement
         Set 25 points
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         if self.calc_match_four(dice_list) > 0:
@@ -231,7 +231,7 @@ class PlayerScore:
         """
         TODO: Implement
         Set 30 points
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         sort_dice = sorted(dice_list)
@@ -251,7 +251,7 @@ class PlayerScore:
         """
         TODO: Implement
         Set 40 points
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         sort_dice = sorted(dice_list)
@@ -268,7 +268,7 @@ class PlayerScore:
         """
         TODO: Implement
         Total of all five dice regardless of number
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         choice = 0
@@ -283,7 +283,7 @@ class PlayerScore:
         Based on user input dic_tup prints score calculations in a numbered
         list format. Asks for user input and adds score value to total score
         (upper and lower score as appropriate). Returns None.
-        :param dice_tup:
+        :param dice_list:
         :return:
         """
         # upper_list = ['aces', 'twos', 'threes', 'fours', 'fives', 'sixes']
