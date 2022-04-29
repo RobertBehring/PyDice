@@ -10,7 +10,7 @@ die entry
 
 2.
 """
-
+import random
 
 class PlayerScore:
     """
@@ -256,13 +256,16 @@ class PlayerScore:
         """
         sort_dice = sorted(dice_list)
         prev_die = sort_dice[0]
+        straight_count = 0
         for die_index in range(1, len(sort_dice)):
             die = sort_dice[die_index]
-            if prev_die >= die:
-                return 0
+            if prev_die == die-1:
+                straight_count += 1
             prev_die = die
 
-        return 40
+        if straight_count >= 5:
+            return 40
+        return 0
 
     def calc_choice(self, dice_list: list[int]) -> int:
         """
@@ -372,17 +375,25 @@ if __name__ == '__main__':
               f'                        PLAYER #{player_turn+1} TURN START\n'
             '------------------------------------------------------------------')
         # DICE ROLL INPUT
-        redo = 'y'
-        while redo == 'y':
-            dice_roll = []
-            for die in range(1, 6):
-                die_input = int(input(f'Enter die # {die}: '))
-                while die_input <= 0 or die_input >= 7:
-                    die_input = int(input(f'Invalid Entry Please Enter die #'
-                                          f' {die}: '))
-                dice_roll.append(die_input)
-            redo = str(input('\nWould you like to enter dice again? [y/n]: '
-                             '')).lower()
+        # redo = 'y'
+        # while redo == 'y':
+        #     dice_roll = []
+        #     for die in range(1, 6):
+        #         die_input = int(input(f'Enter die # {die}: '))
+        #         while die_input <= 0 or die_input >= 7:
+        #             die_input = int(input(f'Invalid Entry Please Enter die #'
+        #                                   f' {die}: '))
+        #         dice_roll.append(die_input)
+        #     redo = str(input('\nWould you like to enter dice again? [y/n]: '
+        #                      '')).lower()
+
+        # RANDOM DICE ROLL FOR PLAYER
+        dice_roll = []
+        for die in range(5):
+            roll = random.randint(1, 6)
+            dice_roll.append(roll)
+        print(dice_roll)
+
         print(
             f'------------------------------------------------------------------\n'
               f'                       PLAYER {player_turn+1} SCORE '
@@ -409,8 +420,13 @@ if __name__ == '__main__':
 
     # WINNER/TIE DECLARATION
     winner = []
+    winner_score = 0
     for player in range(len(player_list)):
-        if player_list[player].display_total_score() >= winner:
+        if player_list[player].display_total_score() > winner_score:
+            winner = [player+1]
+            winner_score = player_list[player].display_total_score()
+        elif player_list[player].display_total_score() == winner_score:
+            winner_score = player_list[player].display_total_score()
             winner.append(player+1)
 
     if len(winner) > 1:
@@ -418,5 +434,8 @@ if __name__ == '__main__':
         for player in winner:
             print('#',player, ', ')
         print('TIE')
+        print(f'Total Score = {winner_score}')
     else:
         print(f'Player #{winner[0]} WINS')
+        print(f'Player #{winner[0]} Score: {winner_score}')
+
