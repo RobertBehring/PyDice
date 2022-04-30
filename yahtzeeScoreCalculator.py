@@ -243,7 +243,7 @@ class PlayerScore:
                 straight_count += 1
             prev_die = die
 
-        if straight_count >= 4:
+        if straight_count >= 3:
             return 30
         return 0
 
@@ -263,7 +263,7 @@ class PlayerScore:
                 straight_count += 1
             prev_die = die
 
-        if straight_count >= 5:
+        if straight_count >= 4:
             return 40
         return 0
 
@@ -375,24 +375,24 @@ if __name__ == '__main__':
               f'                        PLAYER #{player_turn+1} TURN START\n'
             '------------------------------------------------------------------')
         # DICE ROLL INPUT
-        # redo = 'y'
-        # while redo == 'y':
-        #     dice_roll = []
-        #     for die in range(1, 6):
-        #         die_input = int(input(f'Enter die # {die}: '))
-        #         while die_input <= 0 or die_input >= 7:
-        #             die_input = int(input(f'Invalid Entry Please Enter die #'
-        #                                   f' {die}: '))
-        #         dice_roll.append(die_input)
-        #     redo = str(input('\nWould you like to enter dice again? [y/n]: '
-        #                      '')).lower()
+        redo = 'y'
+        while redo == 'y':
+            dice_roll = []
+            for die in range(1, 6):
+                die_input = int(input(f'Enter die # {die}: '))
+                while die_input <= 0 or die_input >= 7:
+                    die_input = int(input(f'Invalid Entry Please Enter die #'
+                                          f' {die}: '))
+                dice_roll.append(die_input)
+            redo = str(input('\nWould you like to enter dice again? [y/n]: '
+                             '')).lower()
 
         # RANDOM DICE ROLL FOR PLAYER
-        dice_roll = []
-        for die in range(5):
-            roll = random.randint(1, 6)
-            dice_roll.append(roll)
-        print(dice_roll)
+        # dice_roll = []
+        # for die in range(5):
+        #     roll = random.randint(1, 6)
+        #     dice_roll.append(roll)
+        # print(dice_roll)
 
         print(
             f'------------------------------------------------------------------\n'
