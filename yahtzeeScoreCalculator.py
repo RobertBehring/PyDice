@@ -45,13 +45,13 @@ class PlayerScore:
         :param dice_list:
         :return:
         """
-        total_aces = 0
+        total = 0
         value = 1
         for die in dice_list:
             if die == value:
-                total_aces += value
+                total += value
 
-        return total_aces
+        return total
 
     def calc_twos(self, dice_list: list[int]) -> int:
         """
@@ -60,13 +60,13 @@ class PlayerScore:
         :param dice_list:
         :return:
         """
-        total_aces = 0
+        total = 0
         value = 2
         for die in dice_list:
             if die == value:
-                total_aces += value
+                total += value
 
-        return total_aces
+        return total
 
     def calc_threes(self, dice_list: list[int]) -> int:
         """
@@ -75,13 +75,13 @@ class PlayerScore:
         :param dice_list:
         :return:
         """
-        total_aces = 0
+        total = 0
         value = 3
         for die in dice_list:
             if die == value:
-                total_aces += value
+                total += value
 
-        return total_aces
+        return total
 
     def calc_fours(self, dice_list: list[int]) -> int:
         """
@@ -90,13 +90,13 @@ class PlayerScore:
         :param dice_list:
         :return:
         """
-        total_aces = 0
+        total = 0
         value = 4
         for die in dice_list:
             if die == value:
-                total_aces += value
+                total += value
 
-        return total_aces
+        return total
 
     def calc_fives(self, dice_list: list[int]) -> int:
         """
@@ -105,13 +105,13 @@ class PlayerScore:
         :param dice_list:
         :return:
         """
-        total_aces = 0
+        total = 0
         value = 5
         for die in dice_list:
             if die == value:
-                total_aces += value
+                total += value
 
-        return total_aces
+        return total
 
     def calc_sixes(self, dice_list: list[int]) -> int:
         """
@@ -280,14 +280,13 @@ class PlayerScore:
 
         return choice
 
-    def display_choices(self, dice_list: list[int]) -> None:
+    def display_calcs(self, dice_list: list[int]) -> None:
         """
-        Todo: Implement
         Based on user input dic_tup prints score calculations in a numbered
         list format. Asks for user input and adds score value to total score
         (upper and lower score as appropriate). Returns None.
         :param dice_list:
-        :return:
+        :return: None
         """
         # upper_list = ['aces', 'twos', 'threes', 'fours', 'fives', 'sixes']
         score_dict = [{
@@ -298,7 +297,7 @@ class PlayerScore:
             'fours': self.calc_fours(dice_list),
             'fives': self.calc_fives(dice_list),
             'sixes': self.calc_sixes(dice_list),
-        },{
+        }, {
             # lower scores
             'match three': self.calc_match_three(dice_list),
             'match four': self.calc_match_four(dice_list),
@@ -334,6 +333,16 @@ class PlayerScore:
                     section[score_choice] = score_dict[section_index][score_choice]
             section_index += 1
 
+    def display_player_score_sheet(self) -> None:
+        """
+
+        :return:
+        """
+
+        for section in self._player_scores:
+            for score in section:
+                print(f'{score}: {section[score]}')
+
     def display_total_score(self) -> int:
         """
         Todo: implement
@@ -361,6 +370,8 @@ if __name__ == '__main__':
 
     turns_left = len(player_list)*13
     player_turn = 0
+    for player in player_list:
+        player.display_player_score_sheet()
 
     print(
         '------------------------------------------------------------------')
@@ -400,7 +411,7 @@ if __name__ == '__main__':
             f'CHOICE\n'
               '------------------------------------------------------------------')
         # SCORE CALCULATIONS AND CHOICE
-        player_list[player_turn].display_choices(dice_roll)
+        player_list[player_turn].display_calcs(dice_roll)
         print('')
         for player in range(len(player_list)):
             print(f'PLAYER #{player+1} TOTAL SCORE: ',
